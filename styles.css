@@ -6,7 +6,7 @@
 .grid-cell {
     width: calc(100% / 16);
     padding-bottom: calc(100% / 16);
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
 }
 
 #clear-button {
