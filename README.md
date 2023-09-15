@@ -1,1 +1,3 @@
 # etch-a-sketch
+
+### Thinking

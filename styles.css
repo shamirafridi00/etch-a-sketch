@@ -1,0 +1,14 @@
+/* Add CSS styles for grid cells, container, and button */
+.grid-row {
+    display: flex;
+}
+
+.grid-cell {
+    width: calc(100% / 16);
+    padding-bottom: calc(100% / 16);
+    border: 1px solid #ccc;
+}
+
+#clear-button {
+    margin-top: 10px;
+}
