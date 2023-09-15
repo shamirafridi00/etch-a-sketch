@@ -1,4 +1,4 @@
-const gridContainer = document.getElementById('grid-container');
+const gridContainer = document.getElementById('grid-view');
 const gridSize = 16;
 
 function createGrid() {
