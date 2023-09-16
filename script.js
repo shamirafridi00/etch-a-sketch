@@ -1,6 +1,9 @@
 const gridContainer = document.getElementById('grid-view');
 const gridSize = 16;
 
+console.log(gridContainer);
+
+
 function createGrid() {
     for (let i = 0; i < gridSize; i++) {
         const row = document.createElement('div');
@@ -8,11 +11,14 @@ function createGrid() {
         for (let j = 0; j < gridSize; j++) {
             const cell = document.createElement('div');
             cell.classList.add('grid-cell');
+            cell.classList.add('grid-item')
             row.appendChild(cell);
         }
         gridContainer.appendChild(row);
     }
 }
+
+console.log(gridContainer)
 
 createGrid();
 
