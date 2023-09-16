@@ -1,58 +1,31 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-
-.main{
+body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
     flex-direction: column;
-}
-
-header h1{
+    align-items: center;
     text-align: center;
-    font-size: 3rem;
-    margin-top: 30px;
-
+    font-family: Arial, sans-serif;
 }
 
-
-.grid-container {
+.container {
     width: 600px;
     height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: wrap;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
-
-.grid-item {
-    flex: 1 1 100%; /* Adjust the width as needed */
-    height: 100%; /* Adjust the height as needed */
-    box-sizing: border-box;
-    border: 1px solid black;
-  }
-
-
-
-/* Add CSS styles for grid cells, container, and button */
-.grid-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    gap: 1px;
+    border: 1px solid #000;
 }
 
-.grid-cell {
-    width: calc(100% / 16);
-    padding-bottom: calc(100% / 16);
-    border: 1px solid black;
+.container > div {
+    background-color: #fff;
+    transition: background-color 0.2s;
 }
 
-#clear-button {
+button {
     margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }

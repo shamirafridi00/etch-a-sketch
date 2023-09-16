@@ -1,52 +1,34 @@
-const gridContainer = document.getElementById('grid-view');
-const gridSize = 16;
-
-console.log(gridContainer);
-
-
-function createGrid() {
-    for (let i = 0; i < gridSize; i++) {
-        const row = document.createElement('div');
-        row.classList.add('grid-row');
-        for (let j = 0; j < gridSize; j++) {
-            const cell = document.createElement('div');
-            cell.classList.add('grid-cell');
-            cell.classList.add('grid-item')
-            row.appendChild(cell);
-        }
-        gridContainer.appendChild(row);
-    }
-}
-
-console.log(gridContainer)
-
-createGrid();
-
-gridContainer.addEventListener('mouseover', (e) => {
-    if (e.target.classList.contains('grid-cell')) {
-        e.target.style.backgroundColor = 'black'; // Change the color as per your preference
-    }
-});
-
-
+const container = document.querySelector('.container');
 const clearButton = document.getElementById('clear-button');
 
-clearButton.addEventListener('click', () => {
-    const newSize = prompt('Enter a new grid size (up to 100):');
-    if (newSize) {
-        const newSizeInt = parseInt(newSize);
-        if (!isNaN(newSizeInt) && newSizeInt <= 100) {
-            clearGrid();
-            createGrid(newSizeInt);
-        } else {
-            alert('Please enter a valid number up to 100.');
-        }
-    }
-});
+// Function to create the grid
+function createGrid(rows, cols) {
+    container.innerHTML = ''; // Clear existing grid
 
-function clearGrid() {
-    while (gridContainer.firstChild) {
-        gridContainer.firstChild.remove();
+    container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+    for (let i = 0; i < rows * cols; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.addEventListener('mouseover', () => {
+            cell.style.backgroundColor = '#000';
+        });
+        container.appendChild(cell);
     }
 }
 
+// Initial 16x16 grid
+createGrid(16, 16);
+
+// Event listener for the clear button
+clearButton.addEventListener('click', () => {
+    let gridSize = prompt('Enter the number of squares (up to 100):');
+    gridSize = parseInt(gridSize);
+
+    if (isNaN(gridSize) || gridSize <= 0 || gridSize > 100) {
+        alert('Please enter a valid number between 1 and 100.');
+    } else {
+        createGrid(gridSize, gridSize);
+    }
+});
