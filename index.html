@@ -7,10 +7,27 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <div class="container">
-        <!-- Grid will be generated here -->
+
+    <h1>Etch a Sketch</h1>
+
+    <div class="main">
+        <div class="container">
+            <!-- Grid will be generated here -->
+        </div>
+        html
+    <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
+    <span id="rangeValue">16x16</span>
+        <input type="color" id="colorPickerCell" name="colorPicker">
+        <button>Eraser</button>
+        <input type="color" id="colorPickerBg" name="colorPickerBackground">
+        <button id="clear-button">Clear Grid</button>
     </div>
-    <button id="clear-button">Clear Grid</button>
-    <script src="script.js"></script>
+
+    <div class="footer">
+        <p>Etch-A-Sketch</p>
+    </div>
+    
+    
 </body>
+<script src="script.js"></script>
 </html>

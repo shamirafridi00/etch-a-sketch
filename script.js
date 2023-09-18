@@ -1,6 +1,12 @@
 const container = document.querySelector('.container');
 const clearButton = document.getElementById('clear-button');
+const colorPickerCell = document.getElementById('colorPickerCell');
+const colorPickerBg = document.getElementById('colorPickerBg');
+const rangeInput = document.getElementById('myRange');
+const rangeValue = document.getElementById('rangeValue');
 let isMouseDown = false;  // to check whether the mouse is down/clicked
+let selectedValue = 16;
+
 
 // Function to create the grid
 function createGrid(rows, cols) {
@@ -18,11 +24,11 @@ function createGrid(rows, cols) {
         cell.classList.add('cell');
         cell.addEventListener('mousedown', () => {
             isMouseDown = true;
-            cell.style.backgroundColor = '#000'; // Change color on mousedown
+            cell.style.backgroundColor = `${colorPickerCell.value}`; // Change color on mousedown
         });
         cell.addEventListener('mouseover', () => {
             if (isMouseDown) {
-                cell.style.backgroundColor = '#000'; // Change color on mouseover while mousedown
+                cell.style.backgroundColor = `${colorPickerCell.value}`; // Change color on mouseover while mousedown
             }
         });
         cell.addEventListener('mouseup', () => {
@@ -33,10 +39,14 @@ function createGrid(rows, cols) {
 
     // Dynamically adjust the container height based on the grid size
     container.style.height = `${container.scrollHeight}px`;
+
+
+    
 }
 
+
 // Initial 16x16 grid
-createGrid(16, 16);
+// createGrid(16, 16);
 
 // Event listener for the clear button
 clearButton.addEventListener('click', () => {
@@ -48,4 +58,14 @@ clearButton.addEventListener('click', () => {
     } else {
         createGrid(gridSize, gridSize);
     }
+});
+
+
+// Event listener for the slider
+
+rangeInput.addEventListener('input', () => {
+const value = rangeInput.value;
+rangeValue.textContent = `${value}x${value}`;
+selectedValue = rangeInput.value;
+createGrid(selectedValue, selectedValue);
 });
