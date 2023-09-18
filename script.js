@@ -7,6 +7,7 @@ let selectedValue = 16;
 let isMouseDown = false;  // to check whether the mouse is down/clicked
 let eraserEnabled = false;
 const eraserButton = document.getElementById('eraser');
+const showGridButton = document.getElementById('show-grid');
 
 
 
@@ -76,13 +77,6 @@ eraserButton.addEventListener('click', () => {
 
 
 
-// Initial grid creation
-const initialValue = rangeInput.value;
-rangeValue.textContent = `${initialValue}x${initialValue}`;
-createGrid(initialValue, initialValue);
-
-
-
 // clear button functionality
 
 clearButton.addEventListener('click', () => {
@@ -90,3 +84,10 @@ clearButton.addEventListener('click', () => {
     createGrid(selectedValue, selectedValue);
 
 })
+
+
+// Initial grid creation
+const initialValue = rangeInput.value;
+rangeValue.textContent = `${initialValue}x${initialValue}`;
+createGrid(initialValue, initialValue);
+
