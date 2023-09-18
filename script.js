@@ -4,15 +4,18 @@ const colorPickerCell = document.getElementById('colorPickerCell');
 const colorPickerBg = document.getElementById('colorPickerBg');
 const rangeInput = document.getElementById('myRange');
 const rangeValue = document.getElementById('rangeValue');
-let isMouseDown = false;  // to check whether the mouse is down/clicked
 let selectedValue = 16;
+let isMouseDown = false;  // to check whether the mouse is down/clicked
+let eraserEnabled = false;
+const eraserButton = document.getElementById('eraser');
+
 
 
 // Function to create the grid
 function createGrid(rows, cols) {
     // Limit the grid size to a maximum of 64x64
-    rows = Math.min(rows, 64);
-    cols = Math.min(cols, 64);
+    rows = Math.min(rows, 100);
+    cols = Math.min(cols, 100);
 
     container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
@@ -24,12 +27,22 @@ function createGrid(rows, cols) {
         cell.classList.add('cell');
         cell.addEventListener('mousedown', () => {
             isMouseDown = true;
-            cell.style.backgroundColor = `${colorPickerCell.value}`; // Change color on mousedown
-        });
+            if (eraserEnabled) {
+              cell.style.backgroundColor = ''; // Reset to default color (e.g., white) when eraser is enabled
+            } else {
+              cell.style.backgroundColor = `${colorPickerCell.value}`; // Change color on mousedown
+            }
+          });
+        
         cell.addEventListener('mouseover', () => {
             if (isMouseDown) {
-                cell.style.backgroundColor = `${colorPickerCell.value}`; // Change color on mouseover while mousedown
-            }
+                if (eraserEnabled) {
+                  cell.style.backgroundColor = ''; // Reset to default color (e.g., white) when eraser is enabled
+                } else {
+                  cell.style.backgroundColor = `${colorPickerCell.value}`; // Change color on mouseover while mousedown
+                }
+              }
+
         });
         cell.addEventListener('mouseup', () => {
             isMouseDown = false;
@@ -45,27 +58,28 @@ function createGrid(rows, cols) {
 }
 
 
-// Initial 16x16 grid
-// createGrid(16, 16);
-
-// Event listener for the clear button
-clearButton.addEventListener('click', () => {
-    let gridSize = prompt('Enter the number of squares (up to 64):');
-    gridSize = parseInt(gridSize);
-
-    if (isNaN(gridSize) || gridSize <= 0 || gridSize > 64) {
-        alert('Please enter a valid number between 1 and 64.');
-    } else {
-        createGrid(gridSize, gridSize);
-    }
-});
-
-
 // Event listener for the slider
 
 rangeInput.addEventListener('input', () => {
-const value = rangeInput.value;
-rangeValue.textContent = `${value}x${value}`;
-selectedValue = rangeInput.value;
-createGrid(selectedValue, selectedValue);
+    const value = rangeInput.value;
+    rangeValue.textContent = `${value}x${value}`;
+    selectedValue = rangeInput.value;
+    createGrid(selectedValue, selectedValue);
 });
+
+
+
+// Eraser Button functionality
+eraserButton.addEventListener('click', () => {
+    
+    console.log('Eraser button clicked');
+    eraserEnabled = !eraserEnabled;
+    eraserButton.classList.toggle('active');
+  });
+
+
+
+// Initial grid creation
+const initialValue = rangeInput.value;
+rangeValue.textContent = `${initialValue}x${initialValue}`;
+createGrid(initialValue, initialValue);
