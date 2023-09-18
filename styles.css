@@ -17,7 +17,6 @@ h1{
 }
 
 
-
 .main{
     display: flex;
     justify-content: center;
@@ -27,6 +26,30 @@ h1{
     gap: 150px;
    
 }
+
+
+.container {
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.container > div {
+    background-color: #fff;
+    transition: background-color 0.2s;
+}
+
+.settings{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
 
 .color-picker{
     -webkit-appearance: none;
@@ -38,8 +61,7 @@ h1{
     border-radius: 100px;
     border: none;
     cursor: pointer;
-    
-
+   
 }
 
 .color-picker::-webkit-color-swatch{
@@ -47,13 +69,7 @@ h1{
     border : none;
 }
 
-.settings{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-}
+
 
 .slider {
     width: 180px;
@@ -64,8 +80,7 @@ h1{
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
-    transition: opacity .2s;
-    
+    transition: opacity .2s;  
 }
 
 .slider:hover {
@@ -84,24 +99,6 @@ h1{
 #rangeValue {
     font-size: 1.5rem;
 }
-
-
-
-.container {
-    width: 600px;
-    height: 600px;
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.container > div {
-    background-color: #fff;
-    transition: background-color 0.2s;
-}
-
-
 
 
 .button {
