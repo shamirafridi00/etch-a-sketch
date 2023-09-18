@@ -12,13 +12,13 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    gap: 1px;
     border: 1px solid #000;
 }
 
 .container > div {
     background-color: #fff;
     transition: background-color 0.2s;
+    /* border: 1px solid #000; */
 }
 
 button {

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic "Read More" Example</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+        .content {
+            height: auto; /* Initially, content is hidden */
+            padding: 10px;
+            background-color: #f0f0f0;
+            transition: height 0.3s ease-in-out; /* Smooth transition */
+        }
+        #read-more-button {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+            <p>Additional content that is initially hidden.</p>
+        </div>
+    </div>
+    <p id="read-more-button">Read More</p>
+
+    <script>
+        const container = document.querySelector('.container');
+        const content = document.querySelector('.content');
+        const readMoreButton = document.getElementById('read-more-button');
+
+        // Function to toggle the content's visibility
+        function toggleContent() {
+            if (container.clientHeight === container.scrollHeight) {
+                // Content is hidden, expand it
+                container.style.height = `${content.scrollHeight}px`;
+                readMoreButton.textContent = 'Read Less';
+            } else {
+                // Content is visible, hide it
+                container.style.height = `${container.clientHeight}px`;
+                readMoreButton.textContent = 'Read More';
+            }
+        }
+
+        // Add a click event listener to the "Read More" button
+        readMoreButton.addEventListener('click', toggleContent);
+    </script>
+</body>
+</html>
