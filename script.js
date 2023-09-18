@@ -14,8 +14,8 @@ const showGridButton = document.getElementById('show-grid');
 // Function to create the grid
 function createGrid(rows, cols) {
     // Limit the grid size to a maximum of 64x64
-    rows = Math.min(rows, 100);
-    cols = Math.min(cols, 100);
+    rows = Math.min(rows, 64);
+    cols = Math.min(cols, 64);
 
     container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;

@@ -1,10 +1,90 @@
-body {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: #E0E0E0;
+    color: #000000;
+}
+
+
+h1{
+    font-size: 5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 3rem; ;
+    
+}
+
+
+
+.main{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    font-family: Arial, sans-serif;
+    height: 60vh;
+    gap: 150px;
+   
 }
+
+.color-picker{
+    -webkit-appearance: none;
+    -moz-appearance : none;
+    appearance: none;
+    width: 120px;
+    height: 120px;
+    background-color: transparent;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    
+
+}
+
+.color-picker::-webkit-color-swatch{
+    border-radius: 100px;
+    border : none;
+}
+
+.settings{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.slider {
+    width: 180px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 25px;
+    background: #8e8989;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 25px;
+    background: #000000;
+    cursor: pointer;
+}
+
+#rangeValue {
+    font-size: 1.5rem;
+}
+
 
 
 .container {
@@ -13,7 +93,7 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    border: 1px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .container > div {
@@ -24,48 +104,68 @@ body {
 
 
 
-button {
-    margin-top: 10px;
+.button {
+    display: inline-block;
     padding: 10px 20px;
-    background-color: #0074d9;
-    color: #fff;
-    border: none;
+    border: 2px solid #000;
+    border-radius: 5px;
+    color: #000;
+    background-color: transparent;
+    transition: background-color 0.2s;
     cursor: pointer;
+    width: 200px;
+    height: 80px;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
-
-.range{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 50px;
+.button:hover {
+    background-color: #000;
+    color: #fff;
 }
 
-
-
-
-
-
-
-
-
-
+.button.active {
+    background-color: #000000;
+    color: #ffffff;
+}
 
 .footer{
-    height: 40px;
+    height: 80px;
     width: 100%;
-    background-color: #0074d9;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
-    font-weight: bold;
-    border-top: 1px solid #000;
+    font-size: 1.5rem;
+    font-weight: normal;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1;
 
+}
+
+.footer img{
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+
+}
+
+.github {
+    transition: transform 0.3s;
+}
+
+.github:hover {
+    animation: spin 0.5s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
