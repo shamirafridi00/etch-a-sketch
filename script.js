@@ -1,7 +1,6 @@
 const container = document.querySelector('.container');
 const clearButton = document.getElementById('clear-button');
 const colorPickerCell = document.getElementById('colorPickerCell');
-const colorPickerBg = document.getElementById('colorPickerBg');
 const rangeInput = document.getElementById('myRange');
 const rangeValue = document.getElementById('rangeValue');
 let selectedValue = 16;
@@ -71,8 +70,6 @@ rangeInput.addEventListener('input', () => {
 
 // Eraser Button functionality
 eraserButton.addEventListener('click', () => {
-    
-    console.log('Eraser button clicked');
     eraserEnabled = !eraserEnabled;
     eraserButton.classList.toggle('active');
   });
@@ -83,3 +80,13 @@ eraserButton.addEventListener('click', () => {
 const initialValue = rangeInput.value;
 rangeValue.textContent = `${initialValue}x${initialValue}`;
 createGrid(initialValue, initialValue);
+
+
+
+// clear button functionality
+
+clearButton.addEventListener('click', () => {
+    container.innerHTML = '';
+    createGrid(selectedValue, selectedValue);
+
+})
